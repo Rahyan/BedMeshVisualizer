@@ -1,4 +1,4 @@
-# BedMeshVisualizer v1.0.5
+# Bed Mesh (Visualizer) v1.0.5
 Visualize your 3D Printer Bed from Marlin's G29 command output (as well as Prusa's G81 command). Helps for Bed Levelling.
 
 Can be found at https://bedmesh.com
