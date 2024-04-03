@@ -57,17 +57,30 @@ $template_mesh = <<<'HTML'
 			<legend id="mesh-{$index}-heading">Mesh Data #{$iteration}</legend>
 			<div class="o-layout">
 				<div class="c-mesh-input">
-					<textarea id="mesh-{$index}-input" name="data[]" cols="100" rows="10" maxlength="1800" autocomplete="off" wrap="off" aria-labelledby="mesh-{$index}-heading">{$data}</textarea>
+					<h3>Input</h3>
+					<hr>
+					<textarea id="mesh-{$index}-input" name="data[]" cols="100" rows="10" maxlength="1800" autocomplete="off" wrap="off" aria-labelledby="mesh-{$index}-heading" placeholder="Paste the Marlin G29 result in order to visualize the data." style="resize:vertical;">{$data}</textarea>
 				</div>
 				<div class="c-mesh-footer">
 					<button id="mesh-{$index}-submit" type="button" data-control="visualize" aria-controls="mesh-{$index}-container" aria-disabled="true" aria-describedby="mesh-control-disabled-reason">Visualize</button>
 					<button id="mesh-{$index}-clear" type="button" data-control="reset" aria-controls="mesh-{$index}-container" aria-disabled="true" aria-describedby="mesh-control-disabled-reason">Clear</button>
+				<hr>
+				<h3>Settings</h3>
+				<hr>
 				</div>
 				<div class="c-mesh-output">
-					<output id="mesh-{$index}-graph" class="c-graph"></output>
+					<h3>Output</h3>
+					<hr>
+					<output id="mesh-{$index}-graph" class="c-graph"><p class="output-text" id="mesh-{$index}-text"><!--Click on the <strong><em>Visualize</em></strong> button to generate the bed mesh.</p>--></output>
 				</div>
 				<div class="c-mesh-footer">
-					<output id="mesh-{$index}-std" class="c-stats"></output>
+					<h3>Stats</h3>
+					<hr>
+					<output id="mesh-{$index}-avgD" class="c-stats-0 mesh-stats"><strong>Average Deviation :</strong> ±0.00 mm</output>
+					<output id="mesh-{$index}-std" class="c-stats-1 mesh-stats"><strong>Standard Deviation :</strong> ±0.00 mm</output>
+					<output id="mesh-{$index}-minMaxVal[0]" class="c-stats-2 mesh-stats"><strong>Minimum Value :</strong> ±0.00 mm</output>
+					<output id="mesh-{$index}-minMaxVal[1]" class="c-stats-3 mesh-stats"><strong>Maximum Value :</strong> ±0.00 mm</output>	
+					<output id="mesh-{$index}-maxDiffVal" class="c-stats-4 mesh-stats"><strong>Maximum Difference :</strong> ±0.00 mm</output>
 				</div>
 			</div>
 		</fieldset>
@@ -94,12 +107,16 @@ $page_title = '3D Printer Bed Mesh Visualizer';
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $page_title; ?></title>
-	<link rel="stylesheet" href="app.css" />
+	<link rel="stylesheet" href="/css/app.css" />
+	<link rel="icon" type="image/png" href="/assets/logo.ico" />
 </head>
 
 <body>
-	<h1><?php echo $page_title; ?></h1>
-	<p>Paste the Marlin G29 results to visualize the data.</p>
+	<?php include 'php/menu.php'; ?>
+	<div class="center">
+	<h1 style="font-weight:bold;"><?php echo $page_title; ?></h1>
+	<p style="margin:0;">Paste the Marlin G29 results to visualize the data.</p>
+	</div>
 	<form class="c-visualizer" method="POST">
 		<input id="mesh-panel-count" type="hidden" name="<?php echo $count; ?>" />
 		<div id="mesh-panel-container">
@@ -131,7 +148,8 @@ $page_title = '3D Printer Bed Mesh Visualizer';
 		<p id="mesh-control-disabled-reason" class="screen-reader-text">Control unavailable</p>
 		<template id="mesh-panel-template"><?php echo $template_mesh; ?></template>
 	</form>
-	<script type="module" src="app.js"></script>
+	<script type="module" src="/js/app.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>
