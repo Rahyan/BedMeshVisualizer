@@ -150,6 +150,7 @@ $page_title = '3D Printer Bed Mesh Visualizer';
 	</form>
 	<script type="module" src="/js/app.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+<?php include 'php/footer.php'; ?>
 </body>
 
 </html>

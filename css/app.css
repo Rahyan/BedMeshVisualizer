@@ -43,6 +43,7 @@
 
 :root {
 	/* Colors */
+	--hue-color: 224;
 	--primaryH: 224;
 	--primaryS: 89%;
 	--primaryL: 60%;
@@ -102,6 +103,7 @@ html {
 body {
 	font-size: 1rem;
 	margin: auto auto;
+	border:1px solid lightgray;
 }
 
 .center{
@@ -302,56 +304,6 @@ h6 {
 	font-weight: var(--font-weight-bold);
 }
 
-input:not([type="file"]),
-optgroup,
-option,
-textarea,
-select {
-	border: 1px solid var(--secondary-light);
-	border-radius: var(--border-radius);
-	box-sizing: border-box;
-	color: inherit;
-	font: inherit;
-	font-size: 1rem;
-	height: 2.5rem;
-	line-height: normal;
-	margin: 0;
-	padding: 0 0.5rem;
-	max-width: 100%;
-	min-width: 15rem;
-	text-transform: none;
-	vertical-align: middle;
-	width: 15rem;
-}
-
-input:not([type="file"]):invalid,
-optgroup:invalid,
-option:invalid,
-textarea:invalid,
-select:invalid {
-	border-color: var(--error);
-}
-
-input:not([type="file"]):invalid:hover,
-optgroup:invalid:hover,
-option:invalid:hover,
-textarea:invalid:hover,
-select:invalid:hover {
-	border: 1px solid #aa0000;
-}
-
-input:not([type="file"])[disabled], input:not([type="file"]):disabled,
-optgroup[disabled],
-optgroup:disabled,
-option[disabled],
-option:disabled,
-textarea[disabled],
-textarea:disabled,
-select[disabled],
-select:disabled {
-	background: var(--secondary-lighter);
-	color: var(--secondary-light);
-}
 
 input:not([type="file"])::-webkit-calendar-picker-indicator,
 optgroup::-webkit-calendar-picker-indicator,
@@ -821,4 +773,186 @@ c-panel .js-plotly-plot .plotly .modebar--hover > :not(.watermark) {
 	position: static;
 	white-space: normal;
 	width: auto;
+}
+
+.footer-container {
+	max-width: 1170px;
+	margin: auto;
+  }
+  
+  .row {
+	display: flex;
+	flex-wrap: wrap;
+  }
+
+.footer>ul {
+  list-style: none;
+}
+
+.footer {
+  box-shadow: 0 -4px 4px rgba(146, 161, 176, 0.35);
+  /*background-color: rgb(228, 228, 228);*/
+  background-color: white;
+  padding: 50px 0;
+}
+
+.footer-col {
+  width: 20%;
+  padding: 0 15px;
+  font-family: "Poppins";
+}
+
+.footer-col h4 {
+	font-family: "Montserrat", sans-serif !important;
+  font-size: 18px;
+  color: black;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+  font-weight: var(--font-semi);
+  position: relative;
+  font-weight: 600;
+}
+
+.footer-col h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #1930fd;
+  height: 3px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul{
+	padding-left: 0px !important;
+}
+.footer-col ul li{list-style-type:none;}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 2px;
+}
+
+.footer-col ul li a {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  color: #838383;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: black;
+  padding-left: 8px;
+}
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/*responsive*/
+@media (max-width: 767px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 574px) {
+  .footer-col {
+    width: 100%;
+  }
+
+  .row {
+    flex-direction: column-reverse;
+  }
+}
+
+.subscribe {
+  display: block;
+  text-align: center;
+  position: relative;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.subscribe__input {
+  background-color: #fff;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  color: #333;
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  height: 50px;
+  letter-spacing: 0.4px;
+  margin: 0 0 20px 0;
+  width: 180px !important;
+  padding: 0 20px 0 20px;
+  text-align: center;
+  width: 100%;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.subscribe__input:focus {
+  outline: none !important;
+  border: 1px solid var(--primary-border);
+  border-color: #7f7f7f;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem hsla(var(--hue-color), 89%, 60%, 0.6);
+}
+
+.subscribe-btn {
+  font-weight: 600px;
+  font-family: "Poppins", "sans-serif";
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: hsla(224, 89%, 60%, 0.699);
+  border: 0.1rem solid hsl(224, 100%, 56%);
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subscribe-btn:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  background-color: hsla(224, 89%, 60%, 0.925);
+}
+
+@media only screen and (max-width: 768px) {
+  .subscribe__input {
+    padding: 0 50px 0 20px;
+  }
+}
+
+.recaptcha-text {
+  color: gray;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.grecaptcha-badge {
+  visibility: hidden !important;
 }
